@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cfop';
+  title = 'Carbon FootPrint of Product Packaging';
 }
