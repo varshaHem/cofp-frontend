@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="input-group rounded">
+        <!-- using formControl gives us the inputs as an observable  -->
+        <input [formControl]="search" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+            aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon">
+            <i class="bi bi-search"></i>
+        </span>
+    </div>
+</div>
+
+<!-- | async: handles the details of subscribing and unsubstribing -->
+<div *ngFor="let result of results$ | async" class="horizontal"> 
+    <!-- results will come from an observable handed to us by HttpClient -->
+    {{ result.co2 }}
+  </div>
