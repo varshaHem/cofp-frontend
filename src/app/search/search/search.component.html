@@ -1,16 +1,43 @@
 <div class="container">
     <div class="input-group rounded">
         <!-- using formControl gives us the inputs as an observable  -->
-        <input [formControl]="search" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-            aria-describedby="search-addon" />
+        <input [formControl]="search" type="search" class="form-control rounded" placeholder="Search"
+            aria-label="Search" aria-describedby="search-addon" />
         <span class="input-group-text border-0" id="search-addon">
             <i class="bi bi-search"></i>
         </span>
     </div>
 </div>
 
+<div *ngIf="results$ | async as result">
+    <div *ngIf="result.hasOwnProperty('totalFootprint')">
+        <h1> Carbon data for food product:</h1>
+        <tr> Product Name: {{ result.productName }}</tr><br>
+        <tr> Market: {{ result.market }}</tr> <br>
+        <tr> Packaging: {{ result.footprintBreakdown?.packaging }} kg CO₂e/kg</tr>
+        <tr> Total Co2 footprint: {{ result.totalFootprint }} kg CO₂e/kg</tr>
+        <tr><img [src]="result.imageUrl" alt="Image"></tr><br>
+    </div>
+
+    <div *ngIf="result.hasOwnProperty('totalClimateFootprint')">
+        <h1> Carbon data for food item:</h1>
+        <tr> Product Name: {{ result.productName }}</tr><br>
+        <tr> Total Co2 footprint: {{ result.totalClimateFootprint }} kg CO2e/kg</tr>
+    </div>
+</div>
+
 <!-- | async: handles the details of subscribing and unsubstribing -->
-<div *ngFor="let result of results$ | async" class="horizontal"> 
-    <!-- results will come from an observable handed to us by HttpClient -->
-    {{ result.co2 }}
-  </div>
+<!-- <div *ngFor="let result of results$ | async | keyvalue" class="horizontal"> -->
+<!-- results will come from an observable handed to us by HttpClient -->
+<!-- {{ result | json }}    -->
+<!-- {{result.key}}:{{result.value}} -->
+<!-- </div> -->
+
+<!-- <tr *ngFor="let result of (results$ | async)?.productDependencies">
+    <td>{{result}}</td>
+</tr> -->
+
+<!-- <div>
+    {{ (results$ | async)?.footprintBreakdown?.packaging }}
+</div> -->
+

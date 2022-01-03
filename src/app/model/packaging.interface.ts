@@ -1,6 +1,9 @@
 export interface IPackaging {
+    name: string,
+    organization: string
+    market: string
     material: string
-    co2: number
+    footprint: number
     quantity: number
     category: string
 }
