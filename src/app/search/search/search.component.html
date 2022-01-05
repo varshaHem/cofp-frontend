@@ -9,35 +9,7 @@
     </div>
 </div>
 
-<div *ngIf="results$ | async as result">
-    <div *ngIf="result.hasOwnProperty('totalFootprint')">
-        <h1> Carbon data for food product:</h1>
-        <tr> Product Name: {{ result.productName }}</tr><br>
-        <tr> Market: {{ result.market }}</tr> <br>
-        <tr> Packaging: {{ result.footprintBreakdown?.packaging }} kg CO₂e/kg</tr>
-        <tr> Total Co2 footprint: {{ result.totalFootprint }} kg CO₂e/kg</tr>
-        <tr><img [src]="result.imageUrl" alt="Image"></tr><br>
-    </div>
+<app-carbon-footprint-info-list [carbonFootprintData]="results$ | async"></app-carbon-footprint-info-list>
 
-    <div *ngIf="result.hasOwnProperty('totalClimateFootprint')">
-        <h1> Carbon data for food item:</h1>
-        <tr> Product Name: {{ result.productName }}</tr><br>
-        <tr> Total Co2 footprint: {{ result.totalClimateFootprint }} kg CO2e/kg</tr>
-    </div>
-</div>
 
-<!-- | async: handles the details of subscribing and unsubstribing -->
-<!-- <div *ngFor="let result of results$ | async | keyvalue" class="horizontal"> -->
-<!-- results will come from an observable handed to us by HttpClient -->
-<!-- {{ result | json }}    -->
-<!-- {{result.key}}:{{result.value}} -->
-<!-- </div> -->
-
-<!-- <tr *ngFor="let result of (results$ | async)?.productDependencies">
-    <td>{{result}}</td>
-</tr> -->
-
-<!-- <div>
-    {{ (results$ | async)?.footprintBreakdown?.packaging }}
-</div> -->
 

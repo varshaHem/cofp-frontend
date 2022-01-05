@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { CarbonFootprintInfoListComponent } from './carbon-footprint-info-list/carbon-footprint-info-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    CarbonFootprintInfoListComponent
   ],
   imports: [
     BrowserModule,

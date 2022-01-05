@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
     this.results$ = this.search.valueChanges.pipe(
       tap(x => console.log(x)),
       // map((x) => x.toLowerCase()),
-      debounceTime(500),  // user has to stop typing for 200ms for us to bother the server with that query
+      debounceTime(2000),  // user has to stop typing for 200ms for us to bother the server with that query
       distinctUntilChanged(),  // if value gets through the pipeline until this point and it is exacly the same as the previous value we sent to server, we dont want to bother the server with a duplicate request 
       filter((search) => search !== ''), // we don't want to send an empty string, its obvious that there wont be a search match
       switchMap((search) => searchService.search(search)  // takes an input observable and returns a different observable. The observable we get from httpRequest will be returned

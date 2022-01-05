@@ -1,0 +1,51 @@
+<div *ngIf="carbonFootprintData.hasOwnProperty('totalFootprint')">
+    <h1> Carbon data for food product:</h1>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Organization</th>
+            <th scope="col">Category</th>
+            <th scope="col">Market</th>
+            <th scope="col">Footprint (kg CO₂e/kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ carbonFootprintData.productName }}</th>
+            <td> {{ carbonFootprintData.orgInfo.displayName }}</td>
+            <td> Food product </td>
+            <td> {{ carbonFootprintData.market }}</td>
+            <td> {{ carbonFootprintData.totalFootprint | number: '1.0-3' }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <img [src]="carbonFootprintData.imageUrl" alt="Image">
+</div>
+
+<div *ngIf="carbonFootprintData.hasOwnProperty('totalClimateFootprint')">
+    <h1> Carbon data for food item:</h1>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Organization</th>
+            <th scope="col">Category</th>
+            <th scope="col">Market</th>
+            <th scope="col">Footprint (kg CO₂e/kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ carbonFootprintData.productName }}</th>
+            <td> </td>
+            <td> {{ carbonFootprintData.itemCategories[1] }} </td>
+            <td> {{ carbonFootprintData.location }}</td>
+            <td> {{ carbonFootprintData.totalClimateFootprint | number: '1.0-3' }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
