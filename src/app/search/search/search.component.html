@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="input-group rounded">
+        <!-- using formControl gives us the inputs as an observable  -->
+        <input [formControl]="search" type="search" class="form-control rounded" placeholder="Search"
+            aria-label="Search" aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon">
+            <i class="bi bi-search"></i>
+        </span>
+    </div>
+</div>
+
+<app-carbon-footprint-info-list [carbonFootprintData]="results$ | async"></app-carbon-footprint-info-list>
+
+
+
